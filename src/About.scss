@@ -1,0 +1,65 @@
+.About {
+    &__container {
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        grid-gap: 20rem;
+        background-color: #0D1B1C;
+        grid-template-columns: 2fr 1fr;
+        overflow: hidden;
+    }
+
+    &__professional {
+        width: 100%;
+        margin: 3rem;
+    }
+
+    &__title {
+        color: #E0CA3C;
+        font-family: 'Zilla Slab Highlight';
+        font-size: 7rem;
+        font-weight: 400;
+        margin: 0,
+    }
+
+    &__blurb {
+        color: #6FB7BC;
+        font-size: 1.5rem;
+        font-family: 'Fira Code'
+    }
+
+    &__skillsTitle {
+        color: #D81e5b;
+        font-family: 'libreBarcode';
+        font-size: 4rem;
+        text-align: right;
+        margin-right: 5rem;
+    }
+
+    &__skillsGrid {
+        margin: 3rem;
+        display: grid;
+        align-items: center;
+        grid-template-columns: 3fr 2fr;
+    }
+
+    &__skillName {
+        color: #6FB7BC;
+        font-family: 'Fira Code';
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+    &__skillLevel {
+        display: flex;
+    }
+
+    &__skillLevelItem {
+        margin: .5rem;
+        background-color: #E0CA3C;
+        border-radius: .7rem;
+        height: .7rem;
+        width: .7rem;
+        box-shadow: 0 0 .3rem .2rem #c2ac1e;
+    }
+}

@@ -1,0 +1,47 @@
+.App {
+  text-align: center;
+
+    &__container {
+        display: grid;
+        place-items: baseline;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+    }
+
+    &__img {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        object-position: bottom;
+        grid-area: 1 / 1 / 30 / 30;
+    }
+
+    &__title {
+        grid-area: 8 / 13/ 10 / 29;
+        color: #C61125;
+        font-family: 'Zilla Slab Highlight';
+        font-size: 6rem;
+        font-weight: 400;
+        margin: 0;
+    }
+
+    &__subtitle {
+        grid-area: 10 / 14 / 12 / 28;
+        color: #380d0c;
+        font-family: 'libreBarcode';
+        font-size: 4rem;
+        margin: .5rem;
+    }
+}
+
+@font-face {
+    font-family: "libreBarcode";
+    src: url("../src/fonts/LibreBarcode128Text-Regular.ttf");
+    font-display: swap;
+}
+
+
+
+
+
