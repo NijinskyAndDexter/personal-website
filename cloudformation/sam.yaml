@@ -28,6 +28,7 @@ Resources:
         DistributionConfig:
           Comment: !Sub ${AWS::StackName}
           DefaultRootObject: index.html
+          Aliases: [!Join ['.', [!Ref subdomain, !Ref route53ZoneName]]]
           Enabled: true
           HttpVersion: http2
           IPV6Enabled: false
@@ -71,10 +72,10 @@ Resources:
     Properties:
       HostedZoneName: !Sub ${route53ZoneName}.
       RecordSets:
-      - Name: !Sub '${subdomain}'
+      - Name: !Sub '${subdomain}.${route53ZoneName}'
         Type: A
         AliasTarget:
-          HostedZoneId: Z2FDTNDATAQYW2 # This seemingly-arbitrary value is hard-coded in the documentation.
+          HostedZoneId: Z2FDTNDATAQYW2 # This value is always used to route to a cloudfront entry
           DNSName: !GetAtt CfDistribution.DomainName
 
   S3Bucket:

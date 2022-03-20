@@ -4,6 +4,7 @@
 
 # node
 node_modules/
+build/
 
 # python
 venv/

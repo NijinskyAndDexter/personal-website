@@ -1,10 +1,10 @@
 #!/usr/bin/make -f
 
-aws_region = us-east-1
-activate_venv = . ./venv/39/bin/activate
-code_deployment_bucket = serverless-deployment-bucket-rkelley
-route_53_zone_name = rebecca-kelley.io
-acm_certificate_arn = arn:aws:acm:us-east-1:370526056565:certificate/ad0ccb79-8139-4eaf-82fd-3a8c0c5834f1
+aws_region=us-east-1
+activate_venv=. ./venv/39/bin/activate
+code_deployment_bucket=serverless-deployment-bucket-rkelley
+route_53_zone_name=rebeccakelley.net
+acm_certificate_arn=arn:aws:acm:us-east-1:370526056565:certificate/94d849b8-fb1b-40ad-9a89-413fa5819355
 
 ifeq (${environment},main)
 	bucket_name=rebecca-kelley-personal-website
@@ -47,4 +47,9 @@ deploy:
 				subdomain=${subdomain} \
 				route53ZoneName=${route_53_zone_name} \
 				acmCertificateArn=${acm_certificate_arn}
+
+.PHONY: upload
+upload: # uploads static files to s3 bucket
+upload: 
+	aws s3 cp --cache-control no-cache --expires 0 build s3://${bucket_name} --recursive
 
