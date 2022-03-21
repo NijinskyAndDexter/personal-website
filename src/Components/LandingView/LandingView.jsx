@@ -1,5 +1,5 @@
 import './LandingView.scss';
-import roses from '../../photos/roses.png';
+import roses from '../../staticAssets/roses.png';
 
 import CottageIcon from '@mui/icons-material/Cottage';
 import CodeIcon from '@mui/icons-material/Code';

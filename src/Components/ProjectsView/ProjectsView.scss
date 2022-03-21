@@ -5,26 +5,21 @@
         background-color: #0D1B1C;
         padding: 3rem;
         display: grid;
-        grid-template-columns: 5fr 2fr;
+        grid-column-gap: 10rem;
+        grid-template-columns: 5fr 3fr;
     }
 
     &__title {
         color: #D81E5B;
-        text-align: right;
         margin: 0;
         font-family: 'Zilla Slab Highlight';
-        font-size: 7rem;
-    }
-
-    &__tabs {
-        color: #0D1B1C;
+        font-size: 6rem;
     }
 
     &__blurb {
-        text-align: right;
         font-family: 'Fira Code';
         color: #6FB7BC;
-        font-size: 1.2rem;
+        font-size: 1rem;
         margin: 3rem 2rem 0 0;
     }
 

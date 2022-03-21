@@ -11,3 +11,5 @@ else
   npm run build
   make deploy environment=$1
   make upload environment=$1
+
+fi
