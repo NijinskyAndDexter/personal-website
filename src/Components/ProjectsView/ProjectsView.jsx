@@ -29,12 +29,16 @@ const ProjectsView = () => {
     }, {
         name: 'Email Sender',
         blurb: 'TODO blah blah write me'
+    }, {
+        name: 'PyCon 2022, Salt Lake', 
+        blurb: 'This is an exception to the suite of projects. My company sent me to PyCon! It was a fantastic time, and I turned what I learned ' +
+        'about the experience into a website. '
     }];
     const classes = {
         accordion: {
             backgroundColor: 'transparent',
             borderBottom: '1px solid #E0CA3C',
-            // boxShadow: '0px 0px 0px 0px !important'
+            borderRadius: '0px'
         },
         accordionDetails: {
             fontFamily: 'Fira Code',
@@ -106,10 +110,10 @@ const ProjectsView = () => {
                             {project.blurb}
                             <br/>
                             <br/>
-                            {project.demoLink}
-                            <br/>
-                            <br/>
+                            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                            {project.demoLink} 
                             {project.sourceCode}
+                            </div>
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
