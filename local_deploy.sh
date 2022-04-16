@@ -1,7 +1,7 @@
 if [-z '$1']
 then 
-  echo an environment is required to run this script
-  echo e.g. ./local_deploy.sh <env_name>
+  echo 'an environment is required to run this script'
+  echo 'e.g. ./local_deploy.sh <env_name>'
 
 else 
   echo deploying to env_name: $1

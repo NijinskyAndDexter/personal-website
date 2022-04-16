@@ -9,7 +9,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link } from 'react-router-dom';
 
 const ProjectsView = () => {
-
   const classes = {
       accordion: {
         backgroundColor: 'transparent',
@@ -33,21 +32,6 @@ const ProjectsView = () => {
 
   return (
     <div className="Projects__container">
-      {/* <Box>
-
-          <Tabs value={tabValue} onChange={handleChange}>
-              {[
-                  {name: 'background remover', id: 0}, 
-                  {name: 'image builder', id: 1}, 
-                  {name: 'handmade emails', id: 2}
-              ].map((item) => <Tab sx={{
-                  textTransform: 'none', 
-                  fontFamily: 'libreBarcode', 
-                  fontSize: '3rem', 
-                  color: `${tabValue === item.id ? '#D81E5B' : '#E0CA3C'}`
-              }} label={item.name} key={item.id}/>)}
-          </Tabs>
-      </Box> */}
       <div style={{padding: '2rem'}}>
           <h1 className="Projects__title">Projects</h1>
           <div style={{display: 'flex'}}>
@@ -84,7 +68,11 @@ const ProjectsView = () => {
                         Allows users to upload an image, which can then be processed to remove the background in the image. Users can select the target pixel color to remove, and the range of pixels
                         in the near color spectrum to remove in addition. The service allows users to download the image once complete. A fully serverless application, this makes use of cloudfront & 
                         s3 for the static front end, as well as a python lambda for image processing. 
+                        <br/>
+                        <br/>
                         <a>Try it out</a>
+                        <br/>
+                        <br/>
                         <a>Source Code</a>
                     </Typography>
                 </AccordionDetails>
@@ -119,7 +107,6 @@ const ProjectsView = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography sx={classes.accordionDetails}>TODO write me blah blah blah</Typography>
-
                 </AccordionDetails>
             </Accordion>
 
