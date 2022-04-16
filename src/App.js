@@ -1,8 +1,11 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import React from 'react';
 import EmailBuilderDemo from './Components/EmailBuilderDemo/EmailBuilderDemo';
-import Home from './Components/Home/Home';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import LandingView from './Components/LandingView/LandingView';
+import ProjectsView from './Components/ProjectsView/ProjectsView';
+import AboutView from './Components/AboutView/AboutView';
+import SpeedDialWrapper from './Components/SpeedDialWrapper/SpeedDialWrapper';
 
 
 const App = () => {
@@ -12,13 +15,21 @@ const App = () => {
                 <BrowserRouter>
                     <Switch>
                         <Route exact path="/email-builder-demo">
-                            <>
-                                <EmailBuilderDemo/>
-                            </>
+                            <EmailBuilderDemo/>
                         </Route>
                         <Route exact path="/">
-                            <Home/>
-                        </Route>                
+                            <SpeedDialWrapper WrappedComponent={LandingView}/>
+                        </Route>  
+                        {/*TODO no match   */}
+                        <Route exact path="/home">
+                            <SpeedDialWrapper WrappedComponent={LandingView}/>
+                        </Route>    
+                        <Route exact path="/about">
+                            <SpeedDialWrapper WrappedComponent={AboutView}/>
+                        </Route> 
+                        <Route exact path="/projects">
+                            <SpeedDialWrapper WrappedComponent={ProjectsView}/>
+                        </Route>            
                     </Switch>
                 </BrowserRouter>
             </ThemeProvider>
@@ -36,28 +47,20 @@ const theme = createTheme({
     },
     palette: {
         primary: {
-            main: '#380d0c', 
-            dark: '#1D1710',
+            main: '#D81e5b', // pink
+            dark: '#A21645',
         }, 
         secondary: {
-            light: '#C61125',
-            main: '#950f1c',
+            light: '#E0CA3C',
+            main: '#1D1710',
         }
     },
     components: {
-        MuiFab: {
-            color: '#950f1c'
-        }, 
-        MuiSpeedDialAction: {
-            FabProps: {
-                color: '#950f1c',
-            }
-        }, 
         MuiTooltip: {
             styleOverrides: {
                 tooltip: {
-                    color: '#C61125',
-                    backgroundColor: '#380d0c',
+                    color: '#1D1710',
+                    backgroundColor: '#D81e5b',
                     fontSize: '1rem',
                 }
             },
