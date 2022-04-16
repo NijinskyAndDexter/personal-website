@@ -7,28 +7,61 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const ProjectsView = () => {
-  const classes = {
-      accordion: {
-        backgroundColor: 'transparent',
-        borderBottom: '1px solid #E0CA3C',
-        // boxShadow: '0px 0px 0px 0px !important'
-      },
-      accordionDetails: {
-        fontFamily: 'Fira Code',
-        color: '#6FB7BC'
-      },
-      accordionSummary: {
-        fontFamily: 'libreBarcode',
-        fontSize: '3rem',
-        color: '#D81E5B'
-      },
-      icon: {
-          color: '#E0CA3C'
-      }
-  }
+    const [selectedProject, setSelectedProject] = useState(null);
 
+    const projects = [{
+        name: 'Background Remover', 
+        blurb: 'Allows users to upload an image, which can then be processed to remove the background in the image. Users can select the target pixel color to remove, and the range of pixels ' + 
+        'in the near color spectrum to remove in addition. The service allows users to download the image once complete. A fully serverless application, this makes use of cloudfront & ' +  
+        's3 for the static front end, as well as a python lambda for image processing. ',
+        demoLink: <a>Try it out</a>,
+        sourceCode: <a>Source Code</a>
+    }, {
+        name: 'Email Builder',
+        blurb: 'Leveraging the fabric.js npm package, this project allows users to build up a collage of watercolor paintings, and ' +
+        'drawings in a single "canvas" HTML element. From there, users can add personalized headers or messages. The ' +
+        'intention is to extend this functionality so that the canvas element can be embedded in an email so users can send "handmade letters"' +
+        'with the ease and task tracking of their email clients.', 
+        demoLink: <Link to="/email-builder-demo" target="_blank">See a demo</Link>
+    }, {
+        name: 'Email Sender',
+        blurb: 'TODO blah blah write me'
+    }];
+    const classes = {
+        accordion: {
+            backgroundColor: 'transparent',
+            borderBottom: '1px solid #E0CA3C',
+            // boxShadow: '0px 0px 0px 0px !important'
+        },
+        accordionDetails: {
+            fontFamily: 'Fira Code',
+            color: '#6FB7BC'
+        },
+        accordionSummary: {
+            fontFamily: 'libreBarcode',
+            fontSize: '3rem',
+            color: '#D81E5B'
+        },
+        icon: {
+            color: '#E0CA3C'
+        }
+    }
+
+    const handleChooseExpanded = (project) => {
+        if (selectedProject && selectedProject.name === project.name) {
+            setSelectedProject(null);
+        } else {
+            setSelectedProject(project)
+        }
+    }
+
+  // TODO - whole subdomain for projects
+  // TODO white theme
+  // TODO pycon project
+  // TODO background remover
 
   return (
     <div className="Projects__container">
@@ -54,62 +87,33 @@ const ProjectsView = () => {
             </div>
         </div>
         <div className="Projects__accordionContainer">
-            <Accordion sx={classes.accordion}>
-                <AccordionSummary
-                    sx={classes.accordionSummary}
-                    expandIcon={<ExpandMoreIcon sx={classes.icon}/>}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
+            {projects.map(project => (
+                <Accordion 
+                    sx={classes.accordion}
+                    onClick={() => handleChooseExpanded(project)}
+                    expanded={selectedProject && selectedProject.name === project.name}
                 >
-                    <Typography sx={classes.accordionSummary}>Background Remover</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Typography sx={classes.accordionDetails}>
-                        Allows users to upload an image, which can then be processed to remove the background in the image. Users can select the target pixel color to remove, and the range of pixels
-                        in the near color spectrum to remove in addition. The service allows users to download the image once complete. A fully serverless application, this makes use of cloudfront & 
-                        s3 for the static front end, as well as a python lambda for image processing. 
-                        <br/>
-                        <br/>
-                        <a>Try it out</a>
-                        <br/>
-                        <br/>
-                        <a>Source Code</a>
-                    </Typography>
-                </AccordionDetails>
-            </Accordion>
-            <Accordion sx={classes.accordion}>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon sx={classes.icon}/>}
-                    aria-controls="panel2a-content"
-                    id="panel2a-header"
-                >
-                    <Typography sx={classes.accordionSummary}>Email Builder</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Typography sx={classes.accordionDetails}>
-                        Leveraging the fabric.js npm package, this project allows users to build up a collage of watercolor paintings, and 
-                        drawings in a single "canvas" HTML element. From there, users can add personalized headers or messages. The 
-                        intention is to extend this functionality so that the canvas element can be embedded in an email so users can send 'handmade letters'
-                        with the ease and task tracking of their email clients.
-                        <br/>
-                        <br/>
-                        <Link to="/email-builder-demo" target="_blank">See a demo</Link>
-                    </Typography>
-                </AccordionDetails>
-            </Accordion>
-            <Accordion sx={classes.accordion}>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon sx={classes.icon}/>}
-                    aria-controls="panel3a-content"
-                    id="panel3a-header"
-                >
-                    <Typography sx={classes.accordionSummary}>Email Sender</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Typography sx={classes.accordionDetails}>TODO write me blah blah blah</Typography>
-                </AccordionDetails>
-            </Accordion>
-
+                    <AccordionSummary
+                        sx={classes.accordionSummary}
+                        expandIcon={<ExpandMoreIcon sx={classes.icon}/>}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                    >
+                        <Typography sx={classes.accordionSummary}>{project.name}</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <Typography sx={classes.accordionDetails}>
+                            {project.blurb}
+                            <br/>
+                            <br/>
+                            {project.demoLink}
+                            <br/>
+                            <br/>
+                            {project.sourceCode}
+                        </Typography>
+                    </AccordionDetails>
+                </Accordion>
+            ))}
         </div>
     </div>
   );
