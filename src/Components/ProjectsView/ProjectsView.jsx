@@ -7,7 +7,9 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React, { useState } from 'react';
 import ReactPlayer from 'react-player'
-import { Button, Modal, Card, CardContent, CardActionArea } from '@mui/material';
+import { Button, Modal, Card, Box, CardContent, IconButton } from '@mui/material';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 const classes = {
     filledGradientButton: {
@@ -31,22 +33,34 @@ const classes = {
         textAlign: 'center',
         margin: '0 2rem'
     }, 
-    modalLayout: {
+    modalContainer: {
         margin: '2rem', 
-        display: 'grid', 
-        gridTemplateRows: '1fr 70vh 1fr', 
-        height: 'calc(100% - 4rem)', 
+        maxHeight: 'calc(100% - 4rem)', 
         overflow: 'scroll'
     }, 
-    modalFooter: {
+    modalLayout: {
         display: 'grid', 
-        gridTemplateColumns: '1fr 5fr 1fr', 
+        gridTemplateRows: '1fr 65vh 1fr', 
+        height: 'calc(100% - 4rem)', 
+        overflow: 'scroll'
+        
+    },
+    modalSliderLayout: {
+        display: 'grid', 
+        gridTemplateColumns: '1fr 12fr 1fr', 
         padding: '2rem 0 0 0', 
         placeItems: 'center'
+    }, 
+    modalFooter: {
+        display: 'flex',
+        justifyContent: 'center',
+        padding: '2rem 2rem 0 2rem'
     }
 }
 
 // todo don't need all the card content components basically repeated to create sep dom elements, just use a div or whatever
+// todo modal needs its own component, this is silly
+// todo preload react images -- taking forever to load from s3 :(
 
 const ProjectsView = () => {
 
@@ -68,7 +82,7 @@ const ProjectsView = () => {
                 <ReactPlayer 
                     controls 
                     width="auto"
-                    height="70vh"
+                    height="65vh"
                     url="videos/NoTabsImageBuilder.mov"
                 />
             ,
@@ -166,47 +180,46 @@ const ProjectsView = () => {
                 aria-describedby="modal-description"
                 fullWidth
             >
-                <Card fullWidth sx={classes.modalLayout}>
-                    <CardContent
-                        sx={{padding: 0, margin: 0, }}
-                    >
-                        <Typography
-                            id="modal-title"
-                            sx={{
-                                fontFamily: 'Serif Display', 
-                                padding: '1rem 3rem',
-                            }}
-                            variant="h4"
+                <Card fullWidth sx={classes.modalContainer}>
+                    <CardContent sx={classes.modalLayout}>
+                        <Box
+                            sx={{padding: 0, margin: 0, }}
                         >
-                            {selectedDemo.name}
-                        </Typography>
-                    </CardContent>
-                    <CardContent sx={{display: 'flex', justifyContent: 'center'}}>
-                        {selectedDemo.demoMedia[demoIndex].component}
-                    </CardContent>
-                    <CardContent sx={classes.modalFooter}>
-                        <CardActionArea 
-                            onClick={() => setDemoIndex(demoIndex - 1)} 
-                            sx={{...classes.filledGradientButton, ...classes.cardActionArea}}
-                            className="Projects__demoLink"
-                            disabled={demoIndex === 0}
-                        >
-                            previous
-                        </CardActionArea>
-                        <div
-                            id="modal-description" 
-                            className="Projects__demoModalBlurb"
-                        >
-                            <p>{selectedDemo.demoMedia[demoIndex].blurb}</p>
-                        </div>
-                        <CardActionArea
-                            className="Projects__demoLink"
-                            sx={{...classes.filledGradientButton, ...classes.cardActionArea}}
-                            disabled={demoIndex === selectedDemo.demoMedia.length - 1}
-                            onClick={() => setDemoIndex(demoIndex + 1)}
-                        >
-                            next
-                        </CardActionArea>
+                            <Typography
+                                id="modal-title"
+                                sx={{
+                                    fontFamily: 'Serif Display', 
+                                    padding: '1rem 3rem',
+                                }}
+                                variant="h4"
+                            >
+                                {selectedDemo.name}
+                            </Typography>
+                        </Box>
+                        <Box sx={classes.modalSliderLayout}>
+                            <IconButton
+                                onClick={() => setDemoIndex(demoIndex - 1)} 
+                                disabled={demoIndex === 0}
+                            >
+                                <ArrowBackIosNewIcon/>
+                            </IconButton>
+                            {selectedDemo.demoMedia[demoIndex].component}
+
+                            <IconButton
+                                disabled={demoIndex === selectedDemo.demoMedia.length - 1}
+                                onClick={() => setDemoIndex(demoIndex + 1)}
+                            >
+                                <ArrowForwardIosIcon/>
+                            </IconButton>
+                        </Box>
+                        <Box sx={classes.modalFooter} >
+                            <div
+                                id="modal-description" 
+                                className="Projects__demoModalBlurb"
+                            >
+                                <p>{selectedDemo.demoMedia[demoIndex].blurb}</p>
+                            </div>
+                        </Box>
                     </CardContent>
                 </Card>
             </Modal>

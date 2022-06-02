@@ -1,0 +1,20 @@
+.Contact {
+  &__container {
+    width: calc(100vw - 6rem);
+    height: calc(100vh - 2rem);
+    padding: 1rem 3rem;
+  }
+
+  &__title {
+    color: #100018;
+    margin: 0;
+    font-family: 'Serif Display';
+    font-size: 6rem;
+    font-weight: 400;
+  }
+
+  &__buttonContainer {
+    display: flex;
+    justify-content: right;
+  }
+}

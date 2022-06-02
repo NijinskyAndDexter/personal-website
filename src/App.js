@@ -4,6 +4,7 @@ import LandingView from './Components/LandingView/LandingView';
 import ProjectsView from './Components/ProjectsView/ProjectsView';
 import AboutView from './Components/AboutView/AboutView';
 import { BrowserRouter } from 'react-router-dom';
+import ContactView from './Components/ContactView/ContactView';
 
 const App = () => {
     return (
@@ -13,6 +14,7 @@ const App = () => {
                     <LandingView/>
                     <AboutView/>
                     <ProjectsView/>
+                    <ContactView/>
                 </BrowserRouter>
             </ThemeProvider>
         </>
@@ -38,12 +40,10 @@ const theme = createTheme({
         }
     },
     components: {
-        MuiTooltip: {
+        MuiInputBase: {
             styleOverrides: {
-                tooltip: {
-                    color: 'white',
-                    backgroundColor: '#510098',
-                    fontSize: '1rem',
+                root: {
+                    fontFamily: 'Lato Light'
                 }
             },
         },
