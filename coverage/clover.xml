@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1654182179329" clover="3.2.0">
+  <project timestamp="1654182179329" name="All files">
+    <metrics statements="31" coveredstatements="23" conditionals="10" coveredconditionals="5" methods="13" coveredmethods="7" elements="54" coveredelements="35" complexity="0" loc="31" ncloc="31" packages="4" files="4" classes="4"/>
+    <package name="src">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="App.js" path="/Users/rebeccakelley/Documents/src/personal-website/src/App.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.Components.AboutView">
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="AboutView.jsx" path="/Users/rebeccakelley/Documents/src/personal-website/src/Components/AboutView/AboutView.jsx">
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="42" type="stmt"/>
+        <line num="35" count="42" type="stmt"/>
+        <line num="36" count="166" type="stmt"/>
+        <line num="38" count="42" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="69" count="42" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.Components.LandingView">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="LandingView.jsx" path="/Users/rebeccakelley/Documents/src/personal-website/src/Components/LandingView/LandingView.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.Components.ProjectsView">
+      <metrics statements="17" coveredstatements="9" conditionals="10" coveredconditionals="5" methods="8" coveredmethods="2"/>
+      <file name="ProjectsView.jsx" path="/Users/rebeccakelley/Documents/src/personal-website/src/Components/ProjectsView/ProjectsView.jsx">
+        <metrics statements="17" coveredstatements="9" conditionals="10" coveredconditionals="5" methods="8" coveredmethods="2"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="53" count="3" type="stmt"/>
+        <line num="94" count="3" type="stmt"/>
+        <line num="95" count="2" type="stmt"/>
+        <line num="96" count="2" type="stmt"/>
+        <line num="98" count="2" type="stmt"/>
+        <line num="99" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="102" count="0" type="stmt"/>
+        <line num="106" count="2" type="stmt"/>
+        <line num="125" count="8" type="stmt"/>
+        <line num="127" count="0" type="stmt"/>
+        <line num="150" count="0" type="stmt"/>
+        <line num="164" count="0" type="stmt"/>
+        <line num="189" count="0" type="stmt"/>
+        <line num="206" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

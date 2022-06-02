@@ -1,36 +1,18 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import React from 'react';
-import EmailBuilderDemo from './Components/EmailBuilderDemo/EmailBuilderDemo';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import LandingView from './Components/LandingView/LandingView';
 import ProjectsView from './Components/ProjectsView/ProjectsView';
 import AboutView from './Components/AboutView/AboutView';
-import SpeedDialWrapper from './Components/SpeedDialWrapper/SpeedDialWrapper';
-
+import { BrowserRouter } from 'react-router-dom';
 
 const App = () => {
     return (
         <>
             <ThemeProvider theme={theme}>
                 <BrowserRouter>
-                    <Switch>
-                        <Route exact path="/email-builder-demo">
-                            <EmailBuilderDemo/>
-                        </Route>
-                        <Route exact path="/">
-                            <SpeedDialWrapper WrappedComponent={LandingView}/>
-                        </Route>  
-                        {/*TODO no match   */}
-                        <Route exact path="/home">
-                            <SpeedDialWrapper WrappedComponent={LandingView}/>
-                        </Route>    
-                        <Route exact path="/about">
-                            <SpeedDialWrapper WrappedComponent={AboutView}/>
-                        </Route> 
-                        <Route exact path="/projects">
-                            <SpeedDialWrapper WrappedComponent={ProjectsView}/>
-                        </Route>            
-                    </Switch>
+                    <LandingView/>
+                    <AboutView/>
+                    <ProjectsView/>
                 </BrowserRouter>
             </ThemeProvider>
         </>
@@ -40,14 +22,14 @@ const App = () => {
 
 const theme = createTheme({
     typography: {
-      fontFamily: '"Fira Code"',
+      fontFamily: '"Serif Display"',
       button: {
         textTransform: 'none'
       }
     },
     palette: {
         primary: {
-            main: '#D81e5b', // pink
+            main: '#510098', // purple
             dark: '#A21645',
         }, 
         secondary: {
@@ -59,8 +41,8 @@ const theme = createTheme({
         MuiTooltip: {
             styleOverrides: {
                 tooltip: {
-                    color: '#1D1710',
-                    backgroundColor: '#D81e5b',
+                    color: 'white',
+                    backgroundColor: '#510098',
                     fontSize: '1rem',
                 }
             },

@@ -3,7 +3,7 @@
         height: 100vh;
         width: 100vw;
         display: grid;
-        background-color: #0D1B1C;
+        background-color: white;
         grid-template-columns: 2fr 1fr 4rem;
         overflow: hidden;
         max-width: 100%;
@@ -15,9 +15,9 @@
     }
 
     &__title {
-        color: #E0CA3C;
-        font-family: 'Zilla Slab Highlight';
-        font-size: 7rem;
+        color: #100018;
+        font-family: 'Serif Display';
+        font-size: 6rem;
         font-weight: 400;
         margin: 0,
     }
@@ -28,14 +28,14 @@
     }
 
     &__blurb {
-        color: #6FB7BC;
+        color: #100018;
         font-size: 1.2rem;
-        font-family: 'Fira Code';
+        font-family: 'Lato Light';
     }
 
     &__skillsTitle {
-        color: #D81e5b;
-        font-family: 'libreBarcode';
+        color: #100018;
+        font-family: 'Poiret One';
         font-size: 4rem;
         text-align: right;
         margin: 0 0 2rem 0;
@@ -51,8 +51,8 @@
     }
 
     &__skillName {
-        color: #6FB7BC;
-        font-family: 'Fira Code';
+        color: #100018;
+        font-family: 'Lato Light';
         font-size: 1.2rem;
         margin: 0;
     }
@@ -62,12 +62,32 @@
         justify-self: right;
     }
 
-    &__skillLevelItem {
-        margin: .5rem;
-        background-color: #E0CA3C;
-        border-radius: .7rem;
-        height: .7rem;
-        width: .7rem;
-        box-shadow: 0 0 .3rem .2rem #c2ac1e;
+    &__skillLevelItem0, &__skillLevelItem1, &__skillLevelItem2, &__skillLevelItem3, &__skillLevelItem4 {
+        margin: .4rem;
+        border-radius: .8rem;
+        height: .8rem;
+        width: .8rem;
     }
+
+
+    &__skillLevelItem0 {
+        background-image: linear-gradient(0.25turn, #2E0099, #510098);
+    }
+
+    &__skillLevelItem1 {
+        background-image: linear-gradient(0.25turn, #510098, #7D31AC);
+    }
+
+    &__skillLevelItem2 {
+        background-image: linear-gradient(0.25turn, #7D31AC, #A861C0);
+    }
+
+    &__skillLevelItem3 {
+        background-image: linear-gradient(0.25turn, #A861C0, #D492D4);
+    }
+
+    &__skillLevelItem4{
+        background-image: linear-gradient(0.25turn, #D492D4, #FFC2E8);
+    }
+
 }

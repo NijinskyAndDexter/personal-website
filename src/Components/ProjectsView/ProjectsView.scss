@@ -2,36 +2,68 @@
     &__container {
         width: calc(100vw - 6rem);
         height: calc(100vh - 6rem);
-        background-color: #0D1B1C;
         padding: 3rem;
         display: grid;
-        grid-column-gap: 10rem;
+        grid-column-gap: 5rem;
         grid-template-columns: 5fr 3fr;
     }
 
     &__title {
-        color: #D81E5B;
+        color: #100018;
         margin: 0;
-        font-family: 'Zilla Slab Highlight';
+        font-family: 'Serif Display';
         font-size: 6rem;
+        font-weight: 400;
     }
 
     &__blurb {
-        font-family: 'Fira Code';
-        color: #6FB7BC;
-        font-size: 1rem;
+        font-family: 'Lato Light';
+        color: #100018;
+        font-size: 1.2rem;
         margin: 3rem 2rem 0 0;
     }
 
-    &__divider {
-        margin: 1rem;
+    &__accordionSummary {
+        font-family: 'Serif Display';
+        font-size: 1.5rem;
+        color: #100018
     }
 
-    &__selectedTab {
-        font-family: 'libreBarcode'
+    &__demoLink {
+        background-image: linear-gradient(to bottom right, #2E0099, #FFC2E8);
+        padding: .5rem 2rem;
+        border-radius: 1rem;
+        color: white;
+        font-family: 'Serif Display';
+    }
+    
+    &__sourceCodeLink  {
+        background-image: linear-gradient(to bottom right, #2E0099, #FFC2E8);
+        padding: .2rem .2rem;
+        border-radius: 1.5rem;
+        color: white;
     }
 
-    &__unselectedTab {
-        font-family: 'Fira Code'
+    &__demoImageCarousel {
+        height: auto;
+        width: 100%;
+    }
+
+    &__demoModalBlurb {
+        font-family: 'Lato Light';
+        text-align: center;
+    }
+
+    &__expandedAccordionButtons {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__sourceCodeLinkInner {
+        padding: .3rem 1.8rem;
+        background-color: white;
+        border-radius: 1rem;
+        color: #100018;
+        font-family: 'Serif Display';
     }
 }

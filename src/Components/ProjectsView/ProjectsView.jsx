@@ -1,31 +1,85 @@
 import './ProjectsView.scss';
-import { Divider } from '@mui/material';
-import React from 'react';
+import '../../App.scss';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import ReactPlayer from 'react-player'
+import { Button, Modal, Card, CardContent, CardActionArea } from '@mui/material';
+
+const classes = {
+    filledGradientButton: {
+        backgroundImage: 'linear-gradient(to bottom right, #2E0099, #FFC2E8)',
+        borderRadius: '1rem',
+        color: 'white',
+        fontFamily: 'Serif Display'
+    }, 
+    accordion: {
+        border: '0px solid white',
+        boxShadow: '0px 0px 0px 0px',
+    },
+    accordionDetails: {
+        fontFamily: 'Lato Light',
+        color: '#100018'
+    },
+    cardActionArea: {
+        justifyContent: 'center',
+        height: '3rem',
+        width: '6rem',
+        textAlign: 'center',
+        margin: '0 2rem'
+    }, 
+    modalLayout: {
+        margin: '2rem', 
+        display: 'grid', 
+        gridTemplateRows: '1fr 70vh 1fr', 
+        height: 'calc(100% - 4rem)', 
+        overflow: 'scroll'
+    }, 
+    modalFooter: {
+        display: 'grid', 
+        gridTemplateColumns: '1fr 5fr 1fr', 
+        padding: '2rem 0 0 0', 
+        placeItems: 'center'
+    }
+}
+
+// todo don't need all the card content components basically repeated to create sep dom elements, just use a div or whatever
 
 const ProjectsView = () => {
-    const [selectedProject, setSelectedProject] = useState(null);
 
     const projects = [{
         name: 'Background Remover', 
         blurb: 'Allows users to upload an image, which can then be processed to remove the background in the image. Users can select the target pixel color to remove, and the range of pixels ' + 
         'in the near color spectrum to remove in addition. The service allows users to download the image once complete. A fully serverless application, this makes use of cloudfront & ' +  
         's3 for the static front end, as well as a python lambda for image processing. ',
-        demoLink: <a>Try it out</a>,
-        sourceCode: <a>Source Code</a>
+        demoLink: <a href="#TODO">Try it out</a>,
+        sourceCode: <a href="#TODO">Source Code</a>
     }, {
         name: 'Email Builder',
         blurb: 'Leveraging the fabric.js npm package, this project allows users to build up a collage of watercolor paintings, and ' +
         'drawings in a single "canvas" HTML element. From there, users can add personalized headers or messages. The ' +
         'intention is to extend this functionality so that the canvas element can be embedded in an email so users can send "handmade letters"' +
         'with the ease and task tracking of their email clients.', 
-        demoLink: <Link to="/email-builder-demo" target="_blank">See a demo</Link>
+        demoMedia: [{
+            component: 
+                <ReactPlayer 
+                    controls 
+                    width="auto"
+                    height="70vh"
+                    url="videos/NoTabsImageBuilder.mov"
+                />
+            ,
+            blurb: 'Users can select images from a library of pictures and themes. Once selected, images can be dragged, dropped, resized, flipped horizontally, flipped vertically, duplicated, or deleted using an intuitive interface.'
+        }, {
+            component: <img src="images/bdayInvite.png" alt="birthday invitation with trees" className="Projects__demoImageCarousel"/>,
+            blurb: 'Without any technical or artistic expertise, users can create e-cards that feel much more personal than the canned options that exist on other websites.'
+        }, {
+            component: <img src="images/friendiversary.jpg" alt="invitation to dinner with illustrations" className="Projects__demoImageCarousel"/>,// todo no jpg!!!
+            blurb: 'The project supports a variety of visual styles to suit many users\' tastes.'
+        }]
     }, {
         name: 'Email Sender',
         blurb: 'TODO blah blah write me'
@@ -34,25 +88,12 @@ const ProjectsView = () => {
         blurb: 'This is an exception to the suite of projects. My company sent me to PyCon! It was a fantastic time, and I turned what I learned ' +
         'about the experience into a website. '
     }];
-    const classes = {
-        accordion: {
-            backgroundColor: 'transparent',
-            borderBottom: '1px solid #E0CA3C',
-            borderRadius: '0px'
-        },
-        accordionDetails: {
-            fontFamily: 'Fira Code',
-            color: '#6FB7BC'
-        },
-        accordionSummary: {
-            fontFamily: 'libreBarcode',
-            fontSize: '3rem',
-            color: '#D81E5B'
-        },
-        icon: {
-            color: '#E0CA3C'
-        }
-    }
+
+
+
+    const [selectedProject, setSelectedProject] = useState(projects[0]);
+    const [selectedDemo, setSelectedDemo] = useState(null);
+    const [demoIndex, setDemoIndex] = useState(0)
 
     const handleChooseExpanded = (project) => {
         if (selectedProject && selectedProject.name === project.name) {
@@ -62,35 +103,24 @@ const ProjectsView = () => {
         }
     }
 
-  // TODO - whole subdomain for projects
-  // TODO white theme
-  // TODO pycon project
-  // TODO background remover
-
   return (
     <div className="Projects__container">
-      <div style={{padding: '2rem'}}>
+      <div >
           <h1 className="Projects__title">Projects</h1>
-          <div style={{display: 'flex'}}>
-                <Divider sx={{margin: '3rem 1rem 0 0', border: '1px solid #E0CA3C', }} orientation="vertical" flexItem/>
-                <Divider sx={{margin: '3rem 1rem 0 0', border: '1px solid #E0CA3C', }} orientation="vertical" flexItem/>
-                <div className="Projects__blurb">
-                    This suite of projects is building towards a service that allows users to send handmade, personalized cards via email. 
-                    When complete, users will be able to select and place images from a digitized collection of my drawings in an easy to use 
-                    browser interface. From there, they will be able to type in a personalized message to the recipient of their choice. 
-                    <br/>
-                    <br/>
-
-                    Click on any of the project's subcomponents listed to the right to learn about the technologies used (or planned). You can either view a demo
-                    or to try the technology out yourself. 
-                    <br/>
-                    <br/>
-
-                    I always welcome feedback! Feel free to contact me to let me know your thoughts. 
-                </div>
+            <div className="Projects__blurb">
+                This suite of projects is building towards a service that allows users to send handmade, personalized cards via email. 
+                When complete, users will be able to select and place images from a digitized collection of my drawings in an easy to use 
+                browser interface. From there, they will be able to type in a personalized message to the recipient of their choice. 
+                <br/>
+                <br/>
+                Click on any of the project's subcomponents listed to the right to learn about the technologies used (or planned). You can either view a demo
+                or to try the technology out yourself. 
+                <br/>
+                <br/>
+                I always welcome feedback! Feel free to contact me to let me know your thoughts. 
             </div>
         </div>
-        <div className="Projects__accordionContainer">
+        <div>
             {projects.map(project => (
                 <Accordion 
                     sx={classes.accordion}
@@ -98,27 +128,89 @@ const ProjectsView = () => {
                     expanded={selectedProject && selectedProject.name === project.name}
                 >
                     <AccordionSummary
-                        sx={classes.accordionSummary}
                         expandIcon={<ExpandMoreIcon sx={classes.icon}/>}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
                     >
-                        <Typography sx={classes.accordionSummary}>{project.name}</Typography>
+                        <div className="Projects__accordionSummary">{project.name}</div>
                     </AccordionSummary>
                     <AccordionDetails>
-                        <Typography sx={classes.accordionDetails}>
+                        <Typography sx={classes.accordionDetails}>{/*  This is causing  the descendent of P issue*/}
                             {project.blurb}
-                            <br/>
-                            <br/>
-                            <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                            {project.demoLink} 
-                            {project.sourceCode}
-                            </div>
+                        
                         </Typography>
+                        <br/>
+                        <br/>
+                        <div className="Projects__expandedAccordionButtons">
+                            {project.sourceCode && 
+                                <div className="Projects__sourceCodeLink">    
+                                    <div className="Projects__sourceCodeLinkInner">{project.sourceCode}</div>
+                                </div>
+                            }
+                            <Button 
+                                className="Projects__demoLink"
+                                onClick={() => setSelectedDemo(project)}
+                                sx={{...classes.filledGradientButton, padding: '.5rem 2rem',}}
+                            >
+                                see a demo
+                            </Button>
+                        </div>
                     </AccordionDetails>
                 </Accordion>
             ))}
         </div>
+
+        {selectedDemo && 
+            <Modal
+                open={selectedDemo !== null}
+                onClose={() => {setSelectedDemo(null); setDemoIndex(0)}}
+                aria-labelledby="modal-title" 
+                aria-describedby="modal-description"
+                fullWidth
+            >
+                <Card fullWidth sx={classes.modalLayout}>
+                    <CardContent
+                        sx={{padding: 0, margin: 0, }}
+                    >
+                        <Typography
+                            id="modal-title"
+                            sx={{
+                                fontFamily: 'Serif Display', 
+                                padding: '1rem 3rem',
+                            }}
+                            variant="h4"
+                        >
+                            {selectedDemo.name}
+                        </Typography>
+                    </CardContent>
+                    <CardContent sx={{display: 'flex', justifyContent: 'center'}}>
+                        {selectedDemo.demoMedia[demoIndex].component}
+                    </CardContent>
+                    <CardContent sx={classes.modalFooter}>
+                        <CardActionArea 
+                            onClick={() => setDemoIndex(demoIndex - 1)} 
+                            sx={{...classes.filledGradientButton, ...classes.cardActionArea}}
+                            className="Projects__demoLink"
+                            disabled={demoIndex === 0}
+                        >
+                            previous
+                        </CardActionArea>
+                        <div
+                            id="modal-description" 
+                            className="Projects__demoModalBlurb"
+                        >
+                            <p>{selectedDemo.demoMedia[demoIndex].blurb}</p>
+                        </div>
+                        <CardActionArea
+                            className="Projects__demoLink"
+                            sx={{...classes.filledGradientButton, ...classes.cardActionArea}}
+                            disabled={demoIndex === selectedDemo.demoMedia.length - 1}
+                            onClick={() => setDemoIndex(demoIndex + 1)}
+                        >
+                            next
+                        </CardActionArea>
+                    </CardContent>
+                </Card>
+            </Modal>
+        }
     </div>
   );
 };

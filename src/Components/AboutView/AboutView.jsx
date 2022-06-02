@@ -1,4 +1,5 @@
 import './AboutView.scss';
+import '../../App.scss';
 import React from 'react';
 
 
@@ -32,7 +33,7 @@ const skills = [
 const getSkillLevel = (level, name) => {
   let skillLevels = [];
   for(let i=0; i<level; i++) {
-      skillLevels.push(<div key={`${i}-name`} className="About__skillLevelItem"></div>);
+      skillLevels.push(<div key={`${i}-name`} className={`About__skillLevelItem${i}`}></div>);
   }
   return skillLevels;
 }
@@ -43,25 +44,26 @@ const AboutView = () => {
         <div className="About__container">
             <div className="About__professional">
                 <h1 className="About__title">About</h1>
-                <p className="About__blurb"> 
-                    I am a full-time software engineer currently working remotely out of Richmond, Virginia. My work focuses around 
-                    building maintainable micro-services using AWS serverless technologies such as Lambda, SNS, S3, Step Functions, and more. 
-                    <br/>
-                    <br/>
-                    My top professional passions include clean suites of integration tests, intelligently maintained application loggers, and 
-                    intuitive UI/UX.
-                    <br/>
-                    <br/>
-                    I live with two adorable cats (who mostly despise each other) and my many overflowing hobbies. Before work, I've recently been
-                    enjoying painting in my work planner to give it some color. (Although, I am human, and sometimes I prefer to sleep in a little). 
-                    After work, I love to eat soup, re-watch Rick and Morty, and drink the occasional Budweiser. Most of my personal projects are 
-                    an intersection between my handmade hobbies and my love of automation.
-                    <br/>
-                    <br/>
-                </p>
+                <div style={{display: 'flex'}}>
+                    <p className="About__blurb"> 
+                        I am a full-time software engineer currently working remotely out of Richmond, Virginia. My work focuses around 
+                        building maintainable micro-services using AWS serverless technologies such as Lambda, SNS, S3, Step Functions, and more. 
+                        <br/>
+                        <br/>
+                        My top professional passions include clean suites of integration tests, intelligently maintained application loggers, and 
+                        the destruction of nested ternaries. I love my job. And I especially love it when I can collaborate closely with my
+                        teammates to solve new, tough problems. Learning on the job is one of my favorite aspects of being a software engineer. 
+                        <br/>
+                        <br/>
+                        I live with two adorable cats (who mostly despise each other) and my many overflowing hobbies. Before work, I've recently been
+                        enjoying painting in my work planner to give it some color. (Although, I am human, and sometimes I prefer to sleep in a little). 
+                        After work, I love to eat soup, re-watch Rick and Morty, and drink the occasional Budweiser. Most of my personal projects are 
+                        an intersection between my handmade hobbies and my love of automation.
+                    </p>
+                </div>
             </div>
             <div className="About__skills">
-                <p className="About__skillsTitle">Software Skills</p>
+                <p className="About__skillsTitle">software skills</p>
                 <div className="About__skillsGrid">
                     {
                         skills.map(skill => {return (
