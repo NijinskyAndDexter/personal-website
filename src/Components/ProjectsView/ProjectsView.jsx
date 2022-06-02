@@ -12,7 +12,7 @@ import { Button, Modal, Card, CardContent, CardActionArea } from '@mui/material'
 const classes = {
     filledGradientButton: {
         backgroundImage: 'linear-gradient(to bottom right, #2E0099, #FFC2E8)',
-        borderRadius: '1rem',
+        borderRadius: '1.5rem',
         color: 'white',
         fontFamily: 'Serif Display'
     }, 

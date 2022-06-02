@@ -28,20 +28,14 @@
         font-size: 1.5rem;
         color: #100018
     }
-
-    &__demoLink {
-        background-image: linear-gradient(to bottom right, #2E0099, #FFC2E8);
-        padding: .5rem 2rem;
-        border-radius: 1rem;
-        color: white;
-        font-family: 'Serif Display';
-    }
     
     &__sourceCodeLink  {
         background-image: linear-gradient(to bottom right, #2E0099, #FFC2E8);
         padding: .2rem .2rem;
         border-radius: 1.5rem;
         color: white;
+        display: flex;
+        place-items: center;
     }
 
     &__demoImageCarousel {
@@ -60,7 +54,7 @@
     }
 
     &__sourceCodeLinkInner {
-        padding: .3rem 1.8rem;
+        padding: .4rem 1.8rem;
         background-color: white;
         border-radius: 1rem;
         color: #100018;
